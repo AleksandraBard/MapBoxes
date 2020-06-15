@@ -1,0 +1,43 @@
+// QUICKSTART
+// Step 1. Pick a style you like from https://www.mapbox.com/gallery/
+// Step 2. Click "Add ___ to your account" at the bottom-right. This should take you to Mapbox Studio.
+// Step 3. Click "Share" in the toolbar at the top-right
+// Step 4. Click "Draft" at the top of the popup
+// Step 5. Copy the "Style URL" and "Access Token" into the fields below
+// Step 6. Done!
+const ACCESS_TOKEN =
+  "pk.eyJ1IjoiYWxla3NhbmRyYWJhcmQiLCJhIjoiY2s1d3BvcGpvMTU5dDNtbXh6ZnY4NHY4bCJ9.eH9QJHs56u8Q7rNSRBSl1Q";
+const MAPBOX_STYLE =
+  "mapbox://styles/aleksandrabard/ckbgpvc4i3br31imyho0ts2ks/draft";
+
+mapboxgl.accessToken = ACCESS_TOKEN;
+
+var map = new mapboxgl.Map({
+  container: "map",
+  style: MAPBOX_STYLE,
+  center: [-74.009, 40.705],
+  zoom: 13,
+});
+
+function markerMaker(type, coordinates) {
+  const marker = document.createElement("div");
+  marker.style.width = "32px";
+  marker.style.height = "39px";
+  if (type === "park") {
+    marker.style.backgroundImage = "url(https://cdn2.iconfinder.com/data/icons/map-pins-1-01-easylines/128/yumminky-pin-46-512.png)";
+  } else if (type === "hotel") {
+    marker.style.backgroundImage = "url(https://cdn0.iconfinder.com/data/icons/travel-vacation/289/travel-transport-hotel-vacation-holidays-tourist-tourism-travelling-traveling_147-512.png)";
+  } else {
+    marker.style.backgroundImage = "url(https://cdn0.iconfinder.com/data/icons/travel-vacation/290/travel-transport-hotel-vacation-holidays-tourist-tourism-travelling-traveling_149-512.png)";
+  }
+  return new mapboxgl.Marker(marker).setLngLat(coordinates);
+}
+
+const marker = markerMaker("hotel", [-73.99922005786658, 40.71498452428341]);
+marker.addTo(map);
+
+const marker1 = markerMaker("park", [-74.0156295643535, 40.70299397806963]);
+marker1.addTo(map);
+
+const marker2 = markerMaker("restaurant", [-74.009, 40.705]);
+marker2.addTo(map);

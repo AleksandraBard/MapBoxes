@@ -1,0 +1,11 @@
+/* 
+Hello Mintbeaners!
+No special sauce here!
+- 100% of my HTML is in the "HTML" editor
+- 100% of my JS is in the "JS" editor
+- 100% of my CSS is in the "CSS" editor
+- I have not added any dependencies via "Settings"
+*/
+
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
